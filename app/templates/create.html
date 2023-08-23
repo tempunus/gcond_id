@@ -1,64 +1,66 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
-    <div class="container">
-        <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto">
-            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-            <div class="card-img-left d-none d-md-flex">
-                <!-- Background image for card set in CSS! -->
+    <div class="container-fluid ps-md-0">
+        <div class="row g-0"> 
+            <!-- Header profile picture-->
+            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                <img class="profile-img" src="../static/image/LogoGcondID.png" alt="..." />
             </div>
-            <div class="card-body p-4 p-sm-5">
-                <h5 class="card-title text-center mb-5 fw-light fs-5"><b>CADASTRO</b></h5>
-                <form name="form-users" id="formUsers" method="post" action="/store/">
-                {% if msg %}
-                    <div class="alert {{class}}">
-                        {{msg}}
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"><b>Cadastre-se!</b></h3>
+                                <form name="form-users" id="formUsers" method="post" action="/store/">
+                                    {% if msg %}
+                                        <div class="alert {{class}}">
+                                            {{msg}}
+                                        </div>
+                                    {% endif %}
+
+                                    {% csrf_token %}    
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nome:" required autofocus>
+                                        <label for="floatingInputUsername">Nome:</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="user" id="user" placeholder="Nome do Usuário:" required autofocus>
+                                        <label for="floatingInputUsername">Nome do Usuário:</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email:">
+                                        <label for="floatingInputEmail">Email:</label>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Senha:">
+                                        <label for="floatingPassword">Senha:</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="password-conf" id="password-conf" placeholder="Repita a Senha:">
+                                        <label for="floatingPasswordConfirm">Repita a Senha:</label>
+                                    </div>
+
+                                    <div class="d-grid mb-2">
+                                        <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Cadastrar</button>
+                                    </div>
+                                    <a class="d-block text-center mt-2 small" href="/painel/">
+                                        Já possui conta? Entrar</a>
+                                    <hr class="my-4">
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                {% endif %}
-
-                {% csrf_token %}    
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome:" required autofocus>
-                    <label for="floatingInputUsername">Nome:</label>
                 </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="user" id="user" placeholder="Nome do Usuário:" required autofocus>
-                    <label for="floatingInputUsername">Nome do Usuário:</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email:">
-                    <label for="floatingInputEmail">Email:</label>
-                </div>
-
-                <hr>
-
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha:">
-                    <label for="floatingPassword">Senha:</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="password-conf" id="password-conf" placeholder="Repita a Senha:">
-                    <label for="floatingPasswordConfirm">Repita a Senha:</label>
-                </div>
-
-                <div class="d-grid mb-2">
-                    <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Cadastrar</button>
-                </div>
-
-                <a class="d-block text-center mt-2 small" href="/painel/">
-                    Já possui conta? Entrar</a>
-
-                <hr class="my-4">
-                </form>
             </div>
-            </div>
-        </div>
         </div>
     </div>
 {% endblock %}
